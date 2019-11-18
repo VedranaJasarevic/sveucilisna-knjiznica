@@ -8,5 +8,5 @@ Sustav za Sveučilišnu knjižnicu u Puli
 ### Organizacija
 [Sveučilište Jurja Dobrile u Puli](http://www.unipu.hr/)   
 [Fakultet informatike u Puli](https://fipu.unipu.hr/)  
-Izrada informatičkih projekata, Ak.g. 2018./2019.  
+Izrada informatičkih projekata, Ak.g. 2019./2020.  
 Voditelj: **Nikola Tanković** (nikola.tankovic@unipu.hr)
