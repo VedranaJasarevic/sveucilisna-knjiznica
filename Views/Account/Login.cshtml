@@ -1,0 +1,76 @@
+﻿@model SVEUCILISNA_KNJIZNICA.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<fieldset>
+<legend>
+    Registracija korisnika
+</legend>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Mejl)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => Model.Mejl)
+        </td>
+    </tr>
+    <tr>
+    <td>
+
+    </td>
+    <td>
+        @Html.ValidationMessageFor(model => model.Mejl, null, new {@class = "text-danger"} )
+    </td>
+
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Lozinka)
+        </td>
+        <td>
+            @Html.PasswordFor(model => Model.Lozinka)
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+
+        </td>
+        <td>
+            @Html.ValidationMessageFor(model => model.Lozinka, null, new {@class = "text-danger"} )
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+
+        </td>
+
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        <input type ="submit" value="Prijavi se"/>
+                    </td>
+                    
+                    <td>
+                        <input type="submit" value="Resetiraj" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            @Html.ValidationMessage("Error", null, new {@class = " text-danger"})
+        </td>
+    </tr>
+
+</table>
+}
+</fieldset>
