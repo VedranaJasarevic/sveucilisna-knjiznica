@@ -1,56 +1,229 @@
-﻿@model SVEUCILISNA_KNJIZNICA.Models.Transakcija
-
+﻿
+@using SVEUCILISNA_KNJIZNICA.ViewModels
+@model SVEUCILISNA_KNJIZNICA.ViewModels.TransakcijaCreateVM
 @{
     ViewBag.Title = "Create";
 }
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"</script>
 
-<h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Transakcija</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.BrojDokumentaID, "BrojDokumentaID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("BrojDokumentaID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.BrojDokumentaID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<html>
+<head>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DatumTransakcije, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatumTransakcije, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumTransakcije, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/94e277c9e1.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Roboto+Slab&display=swap" rel="stylesheet" />
+    <style>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.KorisnikID, "KorisnikID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("KorisnikID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.KorisnikID, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        h6 {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 20px;
+        }
+
+        .form-control {
+            margin: 0 auto;
+            float: none;
+        }
+
+        .form-group {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: brown;
+            border-color: brown;
+        }
+
+        .page-item.active .page-link {
+            color: white !important;
+            background-color: brown !important;
+            border-color: brown !important;
+        }
+
+        .page-link {
+            color: brown !important;
+        }
+
+        .col-sm-12 {
+            border-radius: 10px 10px;
+            font-family: 'Roboto Slab';
+        }
+
+        .col-sm-12 {
+            border-radius: 10px 10px;
+            font-family: 'Roboto Slab';
+        }
+    </style>
+</head>
+<body>
+
+    <div class="jumbotron" style="margin-bottom:0;background-image: url(../../book2.png);height:200px">
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-12" style="background-color:#f4f4d7;">
+                <h2 style="color:#663300;text-align:center;font-family:Cinzel;font-size:50px">Sveučilišna knjižnica u Puli</h2>
+                <h4 style="color:#663300;text-align:center;font-family:Roboto Slab">Sustav za pretragu knjiga Sveučilišne knjižnice u Puli</h4>
+
+
+
+
+
+                <div class="col-sm-1">
+
+                </div>
+                <div class="col-sm-10 col-centered">
+                    @using (Html.BeginForm())
+                    {
+                        if (ViewBag.warrning != null)
+                        {
+                            <div class="warning">
+                                <p>!!!!</p>
+                            </div>
+                        }
+
+                        @Html.AntiForgeryToken()
+
+                        <h2 style="color:#663300">Novo zaduživanje knjiga</h2>
+                        <div class="row">
+                            <div class="col-sm-12 col-centered" style="background-color:#d2a679;border-radius: 10px 10px;font-family:Roboto Slab">
+                                <div class="form-group">
+                                    <h4>1. Korak: Izbor knjiga</h4>
+
+
+                                    <table id="table" class="table table-bordered table-hover table-responsive" style="font-family:Roboto Slab">
+                                        <thead>
+                                        <th>Naziv</th>
+                                        <th>Autor</th>
+                                        <th>Barkod</th>
+                                        <th>Mogućnosti</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var x in Model.DostupneKnjige)
+                                            {
+                                                <tr>
+                                                    <td>@x.Naziv</td>
+                                                    <td>@x.Autor</td>
+                                                    <td>@x.Barkod</td>
+                                                    <td>
+                                                        @if (Convert.ToInt32(Session["count"]) >= 5)
+                                                        {
+                                                            @Html.ActionLink("Dodaj", "DodajKnjigu", null, new { @class = "btn btn-primary disabled" });
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.ActionLink("Dodaj", "DodajKnjigu", x, new { @class = "btn btn-primary" });
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><br />
+
+
+                        <hr />
+                        <div class="row" style="background-color:#d2a679;border-radius: 10px 10px;font-family:Roboto Slab">
+                            <div class="col-sm-12" >
+                                <div class="form-group">
+                                    <h4>2. Korak: Pregled odabranih knjiga</h4>
+                                </div>
+
+                                @if (Model.OdabraneKnjige.Count > 0)
+                                {
+                                    <div class="form-group">
+                                        <table id="table" class="table table-bordered table-hover table-responsive">
+                                            <thead>
+                                            <th>Naziv</th>
+                                            <th>Autor</th>
+                                            <th>Barkod</th>
+                                            <th>Mogućnosti</th>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var x in Model.OdabraneKnjige)
+                                                {
+                                                    <tr>
+                                                        <td>@x.Naziv</td>
+                                                        <td>@x.Autor</td>
+                                                        <td>@x.Barkod</td>
+                                                        <td>
+                                                            @Html.ActionLink("Ukloni", "UkloniKnjigu", x, new { @class = "btn btn-primary" })
+                                                            @*<button class="btn btn-primary">Otkaži</button>*@
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                <hr />
+                            </div>
+                        </div>
+
+
+                        <br />
+                        <br />
+                        <br /><div class="row" style="background-color:#d2a679;border-radius: 10px 10px;font-family:Roboto Slab">
+
+                            <div class="form-group">
+                                <h4>3. Korak: Potvrda izbora knjiga</h4><br />
+                                <div class="form-group " style="align-items:center">
+                                    @Html.Label("Korisnik:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.DropDownList("KorisnikId", null, htmlAttributes: new { @class = "form-control chosen-select" })
+                                        @Html.ValidationMessageFor(model => model.KorisnikId, "", new { @class = "text-danger" })
+                                    </div>
+                                    <br /><br />
+                                </div>
+                                <div>
+
+
+                                </div>
+                            </div>
+
+                        </div><br />
+                        <div class="row ">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Knjiznicar")';return false;"><i class="fas fa-arrow-left"></i> Nazad</button>
+                                <input type="submit" value="Potvrdi odabir" name="Create1" class="btn btn-primary" />
+
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                </div>
+
+                <div class="col-sm-1"></div>
+
+
+
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+</body>
+</html>

@@ -1,31 +1,56 @@
-﻿@{
+﻿@model SVEUCILISNA_KNJIZNICA.Models.LoginModel
+@{
     ViewBag.Title = "Home Page";
 }
+<html>
+<head>
 
-<div class="jumbotron">
-    <h1>Sveučilišna knjižnica u Puli</h1>
-    <p class="lead">Sustav za pretragu knjiga Sveučilišne knjižnice u Puli</p>
-    
-</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Cinzel:400,700|Roboto+Slab&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>@Html.ActionLink("Korisnik", "Index", "Korisnik")</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        h6 {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 20px;
+        }
+
+        .form-control {
+            margin: 0 auto;
+            float: none;
+        }
+
+        .form-group {
+            text-align: center;
+        }
+
+        .col-sm-6 {
+            border-radius: 10px 10px;
+            font-family: 'Dancing Script';
+        }
+    </style>
+</head>
+<body>
+
+    <div class="jumbotron" style="margin-bottom:0;background-image: url(../../book2.png);height:200px"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12" style="background-color:#f4f4d7;">
+                <h1 style="color:#663300;text-align:center;font-family:Cinzel;font-size:70px">Sveučilišna knjižnica u Puli</h1>
+                <h3 style="color:#663300;text-align:center;font-family:Roboto Slab">Sustav za pretragu knjiga Sveučilišne knjižnice u Puli</h3><br /><br />
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 col-centered" style="background-color:#d2a679;">
+                    <h2 style="text-align:center">Knjige su naše najtiše i najvjernije prijateljice, najlakše je doći do njih, daju najmudrije savjete i najstrpljivije su učiteljice.<br /><br /> (Charles W. Eliot)</h2>
+                </div>               
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>@Html.ActionLink("Knjiga", "Index", "Knjiga")</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.ActionLink("Transakcije", "Index", "Transakcija")</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</body>
+</html>

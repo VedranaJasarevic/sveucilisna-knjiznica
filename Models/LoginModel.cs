@@ -10,9 +10,11 @@ namespace SVEUCILISNA_KNJIZNICA.Models
     {
         [DataType(DataType.Password)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Lozinka je obavezna.")]
+        [Display(Name = "E-mail: ")]
         public string Mejl { get; set; }
-        [Display(Name = "Lozinka")]
+        [Display(Name = "Lozinka: ")]
         [DataType(DataType.Password)]
         public string Lozinka { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -25,13 +25,12 @@ namespace SVEUCILISNA_KNJIZNICA.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BrojDokumenta> BrojDokumentas { get; set; }
         public virtual DbSet<Knjiga> Knjigas { get; set; }
         public virtual DbSet<Korisnik> Korisniks { get; set; }
-        public virtual DbSet<Linija> Linijas { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Transakcija> Transakcijas { get; set; }
         public virtual DbSet<Uloga> Ulogas { get; set; }
         public virtual DbSet<Zaliha> Zalihas { get; set; }
+        public virtual DbSet<BrojDokumenta> BrojDokumentas { get; set; }
+        public virtual DbSet<Transakcija> Transakcijas { get; set; }
+        public virtual DbSet<Transakcija_Audit> Transakcija_Audit { get; set; }
     }
 }

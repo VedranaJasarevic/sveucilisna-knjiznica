@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using SVEUCILISNA_KNJIZNICA.Models;
+using SVEUCILISNA_KNJIZNICA.ViewModels;
 
 namespace SVEUCILISNA_KNJIZNICA.Controllers
 {
@@ -21,26 +22,23 @@ namespace SVEUCILISNA_KNJIZNICA.Controllers
 
         public ActionResult Register()
         {
-            Korisnik objKorisnik = new Korisnik();
-            return View(objKorisnik);
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Register(Korisnik objKorisnikModel)
+        public ActionResult Register(KorisnikRegistracija objKorisnikModel)
         {
-
-            
             if (ModelState.IsValid)
             {
                 Korisnik objKorisnik = new Korisnik();
                 
                 objKorisnik.Ime = objKorisnikModel.Ime;
-                objKorisnik.Prezime = objKorisnik.Prezime;
+                objKorisnik.Prezime = objKorisnikModel.Prezime;
                 objKorisnik.Mejl = objKorisnikModel.Mejl;
                 objKorisnik.Lozinka = objKorisnikModel.Lozinka;
-                //objKorisnik.UlogaID = 3;
-                objKorisnik.UlogaID = objKorisnikModel.UlogaID = 3;
-                db.Korisniks.Add(objKorisnikModel);
+                objKorisnik.UlogaID = 3;
+                //objKorisnik.UlogaID = objKorisnikModel.UlogaID = 3;
+                db.Korisniks.Add(objKorisnik);
                 try { db.SaveChanges(); }
                 
                 
@@ -76,25 +74,34 @@ namespace SVEUCILISNA_KNJIZNICA.Controllers
             return View(login);
         }
 
+
         [HttpPost]
         public ActionResult Login(LoginModel loginModel)
         {
 
+            
             if (ModelState.IsValid)
             {
-                if (db.Korisniks.Where(m => m.Mejl == loginModel.Mejl && m.Lozinka == loginModel.Lozinka)
-                        .FirstOrDefault() == null)
+                Korisnik k = db.Korisniks.Where(m => m.Mejl == loginModel.Mejl && m.Lozinka == loginModel.Lozinka)
+                    .FirstOrDefault();
+
+                if (k == null)
                 {
                     ModelState.AddModelError("Error", "Nepostojeći E-mail ili lozinka");
                     return View();
                 }
 
-                else
-                {
-                    Session["Email"] = loginModel.Mejl;
-                    return RedirectToAction("Index", "Home");
+                Session["Email"] = k.Mejl;
+                Session["Id"] = k.KorisnikID;
+                Session["UlogaId"] = k.UlogaID;
 
-                }
+
+                if (loginModel.Mejl == "anaa@unipu.hr" || loginModel.Mejl == "ivaivic@unipu.hr")
+                    return RedirectToAction("Index", "Knjiznicar");
+                
+
+                return RedirectToAction("Index", "Student");
+
             }
             return View();
         }

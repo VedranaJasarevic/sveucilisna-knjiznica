@@ -14,16 +14,10 @@ namespace SVEUCILISNA_KNJIZNICA.Models
     
     public partial class BrojDokumenta
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BrojDokumenta()
-        {
-            this.Transakcijas = new HashSet<Transakcija>();
-        }
-    
         public int BrojDokumentaID { get; set; }
         public string NazivDokumenta { get; set; }
+        public int TransakcijaID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transakcija> Transakcijas { get; set; }
+        public virtual Transakcija Transakcija { get; set; }
     }
 }

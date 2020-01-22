@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -15,10 +16,33 @@ namespace SVEUCILISNA_KNJIZNICA.Controllers
         private Entities db = new Entities();
 
         // GET: Korisnik
+        /*
         public ActionResult Index()
         {
             var korisniks = db.Korisniks.Include(k => k.Uloga);
             return View(korisniks.ToList());
+        }
+        */
+        public ActionResult Index()
+
+        {
+            var korisniks = db.Korisniks
+                .Include(k => k.Uloga);
+               
+            return View(korisniks.ToList());
+
+        }
+
+        public ActionResult IndexForAdmin()
+
+        {
+            var korisniksi = from m in db.Korisniks
+                             where m.UlogaID==3
+                             select m;
+            
+
+            return View(korisniksi.ToList());
+
         }
 
         // GET: Korisnik/Details/5
@@ -54,7 +78,7 @@ namespace SVEUCILISNA_KNJIZNICA.Controllers
             {
                 db.Korisniks.Add(korisnik);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexForAdmin");
             }
 
             ViewBag.UlogaID = new SelectList(db.Ulogas, "UlogaID", "Naziv", korisnik.UlogaID);
@@ -88,7 +112,7 @@ namespace SVEUCILISNA_KNJIZNICA.Controllers
             {
                 db.Entry(korisnik).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexForAdmin");
             }
             ViewBag.UlogaID = new SelectList(db.Ulogas, "UlogaID", "Naziv", korisnik.UlogaID);
             return View(korisnik);
@@ -117,7 +141,7 @@ namespace SVEUCILISNA_KNJIZNICA.Controllers
             Korisnik korisnik = db.Korisniks.Find(id);
             db.Korisniks.Remove(korisnik);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexForAdmin");
         }
 
         protected override void Dispose(bool disposing)

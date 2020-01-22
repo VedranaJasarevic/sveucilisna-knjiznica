@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+    <html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Roboto+Slab&display=swap" rel="stylesheet" />
+        <style>
+
+
+            h6 {
+                text-align: center;
+                padding-top: 10px;
+                font-size: 20px;
+            }
+
+            .form-control {
+                margin: 0 auto;
+                float: none;
+            }
+
+            .form-group {
+                text-align: center;
+            }
+
+            .btn-primary {
+                background-color: brown;
+                border-color: brown;
+            }
+            .col-sm-10 {
+                border-radius: 10px 10px;
+                font-family:'Roboto Slab';
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="jumbotron" style="margin-bottom:0;background-image: url(../../book2.png);height:200px">
+
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-sm-12" style="background-color:#f4f4d7;">
+                    <h1 style="color:#663300;text-align:center;font-family:Cinzel;font-size:70px">Sveučilišna knjižnica u Puli</h1>
+                    <h3 style="color:#663300;text-align:center;font-family:Roboto Slab">Sustav za pretragu knjiga Sveučilišne knjižnice u Puli</h3>
+
+                    <div class="col-sm-1">
+
+                    </div>
+                    <div class="col-sm-10 col-centered" style="background-color:#d2a679;height:130px">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+
+                                <div class="btn-group-lg">
+                                    <br /><br />
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("IndexForStudent", "Zaliha")';return false;">Pregled dostupnih knjiga</button>
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("IndexForSpecificUser", "Transakcija")';return false;">Pregled transakcija</button>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-1"></div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+    </html>

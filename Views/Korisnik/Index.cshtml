@@ -4,54 +4,121 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lozinka)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mejl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Uloga.Naziv)
-        </th>
-        <th></th>
-    </tr>
+<html>
+<head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lozinka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mejl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Uloga.Naziv)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KorisnikID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KorisnikID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KorisnikID })
-        </td>
-    </tr>
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/94e277c9e1.js" crossorigin="anonymous"></script>
+    <style>
 
-</table>
+
+        h6 {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 20px;
+        }
+
+        .form-control {
+            margin: 0 auto;
+            float: none;
+        }
+
+        .form-group {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: brown;
+            border-color: brown;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="jumbotron" style="margin-bottom:0;background-image: url(../../book2.png);height:200px">
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-12" style="background-color:#f4f4d7;">
+                <h2 style="color:#663300;text-align:center">Sveučilišna knjižnica u Puli</h2>
+                <h5 style="color:#663300;text-align:center">Sustav za pretragu knjiga Sveučilišne knjižnice u Puli</h5>
+
+                <div class="col-sm-1">
+
+                </div>
+                <div class="col-sm-10 col-centered" style="background-color:#d2a679;">
+
+                    <h2>Pregled zaliha</h2>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Ime)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prezime)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Lozinka)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Mejl)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Uloga.Naziv)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Prezime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Lozinka)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mejl)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Uloga.Naziv)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Uredi", "Edit", new { id = item.KorisnikID }) |
+                                    @Html.ActionLink("Detalji", "Details", new { id = item.KorisnikID }) |
+                                    @Html.ActionLink("Obriši", "Delete", new { id = item.KorisnikID })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Knjiznicar")';return false;"><i class="fas fa-arrow-left"></i> Nazad</button>
+
+
+
+                </div>
+                
+
+                <div class="col-sm-1"></div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

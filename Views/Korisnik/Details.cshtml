@@ -4,55 +4,109 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<html>
+<head>
 
-<div>
-    <h4>Korisnik</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ime)
-        </dt>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/94e277c9e1.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ime)
-        </dd>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Roboto+Slab&display=swap" rel="stylesheet" />
+    <style>
+        h6 {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 20px;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Prezime)
-        </dt>
+        .form-control {
+            margin: 0 auto;
+            float: none;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Prezime)
-        </dd>
+        .form-group {
+            text-align: center;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Lozinka)
-        </dt>
+        .btn-primary {
+            background-color: brown;
+            border-color: brown;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Lozinka)
-        </dd>
+        .col-sm-4 {
+            border-radius: 10px 10px;
+            font-family: 'Roboto Slab';
+        }
+    </style>
+</head>
+<body>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Mejl)
-        </dt>
+    <div class="jumbotron" style="margin-bottom:0;background-image: url(../../book2.png);height:200px"></div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Mejl)
-        </dd>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12" style="background-color:#f4f4d7;">
+                <h2 style="color:#663300;text-align:center;font-family:Cinzel;font-size:50px">Sveučilišna knjižnica u Puli</h2>
+                <h4 style="color:#663300;text-align:center;font-family:Roboto Slab">Sustav za pretragu knjiga Sveučilišne knjižnice u Puli</h4>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 col-centered" style="background-color:#d2a679;">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <div>
+                                <h2 style="color:#663300">Detalji studenta:</h2>
+                                <hr />
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Ime):
+                                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Uloga.Naziv)
-        </dt>
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Ime)
+                                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Uloga.Naziv)
-        </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Prezime):
+                                    </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.KorisnikID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Prezime)
+                                    </dd>
+
+                     
+
+                                    <dt>
+                                        E-mail:
+                                    </dt>
+
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Mejl)
+                                    </dd>
+
+                                    <dt>
+                                        Uloga:
+                                    </dt>
+
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Uloga.Naziv)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p>                                                   
+                                @Html.ActionLink("Uredi", "Edit", new { id = Model.KorisnikID }, new { @class = "btn btn-primary" })
+                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("IndexForAdmin", "Korisnik")';return false;"><i class="fas fa-arrow-left"></i> Nazad</button>
+                            </p>
+
+                        </div>
+                    }
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

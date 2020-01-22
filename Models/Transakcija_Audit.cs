@@ -12,12 +12,13 @@ namespace SVEUCILISNA_KNJIZNICA.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Transakcija_Audit
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int TransakcijaID { get; set; }
+        public string Status { get; set; }
+    
+        public virtual Transakcija Transakcija { get; set; }
+        public virtual Transakcija_Audit Transakcija_Audit1 { get; set; }
+        public virtual Transakcija_Audit Transakcija_Audit2 { get; set; }
     }
 }

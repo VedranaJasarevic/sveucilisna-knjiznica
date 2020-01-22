@@ -11,23 +11,29 @@ namespace SVEUCILISNA_KNJIZNICA.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Transakcija
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Transakcija()
         {
-            this.Linijas = new HashSet<Linija>();
+            this.BrojDokumentas = new HashSet<BrojDokumenta>();
         }
     
         public int TransakcijaID { get; set; }
-        public int BrojDokumentaID { get; set; }
         public System.DateTime DatumTransakcije { get; set; }
+
+        [Display(Name = "Korisnik")]
         public int KorisnikID { get; set; }
+
+        [Display(Name = "Knjiga")]
+        public int KnjigaID { get; set; }
     
-        public virtual BrojDokumenta BrojDokumenta { get; set; }
-        public virtual Korisnik Korisnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Linija> Linijas { get; set; }
+        public virtual ICollection<BrojDokumenta> BrojDokumentas { get; set; }
+        public virtual Knjiga Knjiga { get; set; }
+        public virtual Korisnik Korisnik { get; set; }
+        public virtual Transakcija_Audit Transakcija_Audit { get; set; }
     }
 }

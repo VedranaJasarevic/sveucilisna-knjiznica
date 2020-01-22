@@ -11,14 +11,15 @@ namespace SVEUCILISNA_KNJIZNICA.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Knjiga
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Knjiga()
         {
-            this.Linijas = new HashSet<Linija>();
             this.Zalihas = new HashSet<Zaliha>();
+            this.Transakcijas = new HashSet<Transakcija>();
         }
     
         public int KnjigaID { get; set; }
@@ -26,11 +27,13 @@ namespace SVEUCILISNA_KNJIZNICA.Models
         public string Autor { get; set; }
         public string Barkod { get; set; }
         public string ISBN { get; set; }
+
+        [Display(Name = "Godina izdanja")]
         public string GodIzdanja { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Linija> Linijas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zaliha> Zalihas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transakcija> Transakcijas { get; set; }
     }
 }

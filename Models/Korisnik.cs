@@ -7,70 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-using System.Security.Policy;
-
 namespace SVEUCILISNA_KNJIZNICA.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class Korisnik
     {
-
-        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Korisnik()
         {
             this.Transakcijas = new HashSet<Transakcija>();
         }
     
-        [Key]
         public int KorisnikID { get; set; }
-
-
-        [Display(Name = "Ime")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Ime je obavezno.")]
         public string Ime { get; set; }
-
-
-        [Display(Name = "Prezime")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Prezime je obavezno.")]
         public string Prezime { get; set; }
-
-
-        [Display(Name = "Lozinka")]
-        [DataType(DataType.Password)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Lozinka je obavezna.")]
         public string Lozinka { get; set; }
 
-
-        [Display(Name = "Potvrdi lozinku")]
-        [DataType(DataType.Password)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Potvrdite lozinku.")]
-        [Compare("Lozinka", ErrorMessage = "Lozinka i potvrðena lozinka trebaju biti iste! ")]
-        public string PotvrdiLozinku { get; set; }
-
-
         [Display(Name = "E-mail")]
-        [DataType(DataType.EmailAddress)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "E-mail je obavezan.")]
         public string Mejl { get; set; }
 
 
-        
-        public int UlogaID
-        {
-            get;
-            set;
-        }
-
+        [Display(Name = "Uloga")]
+        public int UlogaID { get; set; }
     
         public virtual Uloga Uloga { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transakcija> Transakcijas { get; set; }
-
-        public string SuccesMessage { get; set; }
     }
 }

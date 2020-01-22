@@ -4,61 +4,106 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+    <html>
+    <head>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Korisnik</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ime)
-        </dt>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/94e277c9e1.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Roboto+Slab&display=swap" rel="stylesheet" />
+        <style>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ime)
-        </dd>
+            h6 {
+                text-align: center;
+                padding-top: 10px;
+                font-size: 20px;
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Prezime)
-        </dt>
+            .form-control {
+                margin: 0 auto;
+                float: none;
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.Prezime)
-        </dd>
+            .form-group {
+                text-align: center;
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Lozinka)
-        </dt>
+            .btn-primary {
+                background-color: brown;
+                border-color: brown;
+            }
+        .col-sm-4 {
+            border-radius: 10px 10px;
+            font-family: 'Roboto Slab';
+        }
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron" style="margin-bottom:0;background-image: url(../../book2.png);height:200px"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12" style="background-color:#f4f4d7;">
+                    <h2 style="color:#663300;text-align:center;font-family:Cinzel;font-size:50px">Sveučilišna knjižnica u Puli</h2>
+                    <h4 style="color:#663300;text-align:center;font-family:Roboto Slab">Sustav za pretragu knjiga Sveučilišne knjižnice u Puli</h4>
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4 col-centered" style="background-color:#d2a679;">
+                        <div class="form-group">
+                            <div>
+                                <h3 style="color:#663300">Jeste li sigurni da želite izbrisati studenta?</h3>
+                                <hr />
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Ime):
+                                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Lozinka)
-        </dd>
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Ime)
+                                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Mejl)
-        </dt>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Prezime):
+                                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Mejl)
-        </dd>
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Prezime)
+                                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Uloga.Naziv)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Uloga.Naziv)
-        </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Mejl):
+                                    </dt>
 
-    </dl>
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Mejl)
+                                    </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                                    <dt>
+                                        Uloga:
+                                    </dt>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                                    <dd style="text-align:left;">
+                                        @Html.DisplayFor(model => model.Uloga.Naziv)
+                                    </dd>
+                                </dl>
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-actions no-color">                              
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Izbriši</button>
+                                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("IndexForAdmin", "Korisnik")';return false;"><i class="fas fa-times"></i> Odustani</button>                                  
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            </div>
         </div>
-    }
-</div>
+    </body>
+    </html>

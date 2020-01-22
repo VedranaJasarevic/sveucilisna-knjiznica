@@ -15,10 +15,14 @@ namespace SVEUCILISNA_KNJIZNICA.Controllers
         private Entities db = new Entities();
 
         // GET: Knjiga
-        public ActionResult Index()
+        public ActionResult Index(string searching)
         {
-            return View(db.Knjigas.ToList());
+            return View(db.Knjigas.Where(x => x.Naziv.Contains(searching) || x.Autor.Contains(searching) ||
+            x.GodIzdanja.Contains(searching) || searching == null).ToList());
+            
         }
+
+
 
         // GET: Knjiga/Details/5
         public ActionResult Details(int? id)
