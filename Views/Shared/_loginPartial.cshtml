@@ -1,13 +1,7 @@
 ﻿
 @if (Session["Email"] == null)
 {
-    <ul class="nav navbar-nav navbar-left">
-        <li>
-
-            <img class="img-responsive2" src="~/Scripts/icon.jpg"  style="width: 100px !important;height: auto;">
-
-        </li>
-    </ul>
+ 
 
 
     <ul class="nav navbar-nav navbar-right">
@@ -24,13 +18,7 @@
 
 else
 {
-    <ul class="nav navbar-nav navbar-left">
-        <li>
 
-            <img class="img-responsive2" src="icon.jpg" style="width: 100px !important;height: auto;">
-
-        </li>
-    </ul>
     <ul class="nav navbar-nav navbar-right">
         <li style="color:white;font-family:Roboto Slab">
             @Html.ActionLink(" " +
